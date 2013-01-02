@@ -1,0 +1,28 @@
+GIT
+  remote: git://github.com/larskanis/libusb.git
+  revision: 038fa22b7e46ca43916d37dadfa4d6687ba37ba5
+  specs:
+    libusb (0.3.0)
+      ffi (>= 1.0)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    ffi (1.2.0)
+    rack (1.4.1)
+    rack-protection (1.3.2)
+      rack
+    sinatra (1.3.3)
+      rack (~> 1.3, >= 1.3.6)
+      rack-protection (~> 1.2)
+      tilt (~> 1.3, >= 1.3.3)
+    sinatra-cross_origin (0.2.0)
+    tilt (1.3.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  libusb!
+  sinatra
+  sinatra-cross_origin
