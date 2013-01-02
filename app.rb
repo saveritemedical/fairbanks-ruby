@@ -11,13 +11,12 @@ end
 
 get '/' do
   cross_origin
-  #@scale = Scale.new
-  #@scale.get_weight
+  @scale = Scale.new
+  weight = @scale.get_weight
   content_type :json
   {
-    weight: "30.50"
+    weight: weight
   }.to_json
-
 end
 
 
