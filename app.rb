@@ -13,6 +13,7 @@ get '/' do
   cross_origin
   @scale = Scale.new
   weight = @scale.get_weight
+  @scale.teardown
   content_type :json
   {
     weight: weight
@@ -46,6 +47,10 @@ class Scale
 
   def handle
     @handle ||= device.open
+  end
+
+  def handle=(handler)
+    @handle = handler
   end
 
   def get_weight(attr = {})
