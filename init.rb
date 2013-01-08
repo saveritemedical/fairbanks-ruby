@@ -1,19 +1,23 @@
 #! /usr/bin/env ruby
 
-require 'sinatra'
+require 'rubygems'
+require 'sinatra/cross_origin'
 require 'json'
 require 'libusb'
-require 'sinatra/cross_origin'
 
-configure do
-  enable :cross_origin
-end
+require File.expand_path(File.dirname(__FILE__) + '/lib/config')
+
+set :environment, :production
 
 get '/' do
   cross_origin
   @scale = Scale.new
-  weight = @scale.get_weight
-  @scale.teardown
+  begin
+    weight = @scale.get_weight
+    @scale.teardown
+  rescue
+    halt 500
+  end
   content_type :json
   {
     weight: weight
