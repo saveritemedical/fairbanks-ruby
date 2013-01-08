@@ -7,8 +7,6 @@ require 'libusb'
 
 require File.expand_path(File.dirname(__FILE__) + '/lib/config')
 
-set :environment, :production
-
 get '/' do
   cross_origin
   @scale = Scale.new
