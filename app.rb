@@ -55,7 +55,12 @@ class Scale
 
   def get_weight(attr = {})
     setup_interface! unless @interface_open
-    _get_weight
+    begin
+      _get_weight
+    rescue
+      handle.detach_kernel_driver 0
+      _get_weight
+    end
   end
 
   private
