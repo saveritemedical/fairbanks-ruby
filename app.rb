@@ -61,15 +61,20 @@ class Scale
   private
 
   def setup_interface!
-    handle
-    handle.detach_kernel_driver interface
+    begin
+      handle.detach_kernel_driver 0
+    rescue
+    end
     handle.claim_interface interface
     @interface_open = true
   end
 
   def teardown_interface!
     handle.release_interface interface
-    handle.attach_kernel_driver interface
+    begin
+      handle.attach_kernel_driver interface
+    rescue
+    end
     @interface_open = false
   end
 
